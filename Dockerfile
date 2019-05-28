@@ -51,4 +51,4 @@ VOLUME /home/${user}/.jenkins
 VOLUME ${AGENT_WORKDIR}
 WORKDIR /home/${user}
 
-ENTRYPOINT java -jar /usr/share/jenkins/slave.jar -jnlpUrl http://35.190.71.77/computer/agent/slave-agent.jnlp -secret 1f3eee1b7a80f4237a8c7c3254519359f2242d87f469f3736022b7be9987318e -workDir "/home/jenkins/agent"
+ENTRYPOINT java -jar /usr/share/jenkins/slave.jar -jnlpUrl http://10.11.252.9/computer/agent/slave-agent.jnlp -secret 1f3eee1b7a80f4237a8c7c3254519359f2242d87f469f3736022b7be9987318e -workDir "/home/jenkins/agent"
