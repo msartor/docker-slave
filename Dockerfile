@@ -34,9 +34,11 @@ RUN groupadd -g ${gid} ${group}
 RUN useradd -c "Jenkins user" -d $HOME -u ${uid} -g ${gid} -m ${user}
 LABEL Description="This is a base image, which provides the Jenkins agent executable (slave.jar)" Vendor="Jenkins project" Version="${VERSION}"
 
-ARG AGENT_WORKDIR=/home/${user}/agent
+ARG AGENT_WORKDIR=/home/${user}/agentd
 
-RUN apt-get update && apt-get install git-lfs
+RUN apt-get update 
+RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
+RUN apt-get install git-lfs
 RUN curl --create-dirs -fsSLo /usr/share/jenkins/slave.jar https://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/${VERSION}/remoting-${VERSION}.jar \
   && chmod 755 /usr/share/jenkins \
   && chmod 644 /usr/share/jenkins/slave.jar
